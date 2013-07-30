@@ -1,0 +1,16 @@
+<% if @user.valid? %>
+  console.log("if")
+  var alert = $("<div>").addClass("alert-box alert radius");
+  alert.text("You have successfully Signed Up!");
+  $("#user_forms").empty().append(alert);
+  alert.fadeOut(1000);
+<% else %>
+  console.log("else")
+  var ul = $("<ul>")
+  <% @user.errors.messages.each do |k, v| %>
+    var li = $("<li>").text("<%= k %> <%= v.first %>").addClass("alert-box alert radius");
+    ul.prepend(li)
+  <% end %>
+  $("#user_forms").prepend(ul);
+  $("#user_forms").effect("shake", 500);
+<% end %>

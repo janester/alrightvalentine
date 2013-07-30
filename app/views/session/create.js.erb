@@ -1,0 +1,19 @@
+var alert = $("<div>").addClass("alert-box alert radius");
+<% if @current_user.present? %>
+  console.log("if")
+  alert.text("You have successfully Logged In!");
+  $("#user_forms").empty().append(alert);
+  alert.fadeOut(1000);
+  // stuff that needs re-rendering now that there is a signed in user
+  $("#nav_container").empty().append("<%= j render :partial => 'layouts/nav' %>")
+  //first time signing in
+  <% if @current_user.sign_ins == 1 %>
+    var profile = $("<div>").append("Welcome! Click <a href='/users/<%= @current_user.id %>'>here</a> to create your profile");
+    $("#user_forms").append(profile)
+  <% end %>
+<% else %>
+  console.log("else")
+  alert.text("Your Credentials Were Incorrect");
+  $("#user_forms").prepend(alert);
+  $("#user_forms").effect("shake", 500);
+<% end %>

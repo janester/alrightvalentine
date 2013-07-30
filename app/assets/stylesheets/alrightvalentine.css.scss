@@ -1,0 +1,29 @@
+$red: #c60f13;
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, textarea:focus {
+  border: 1px solid red;
+  box-shadow: 0 0 10px red;
+}
+
+#home-holder {
+  overflow: hidden;
+  .make-left {
+    float: left;
+    width: 50%;
+    text-align: center;
+    height: 350px;
+    padding-top: 50px;
+    p {
+      width: 75%;
+      text-align: left;
+      margin: auto;
+    }
+  }
+  #browse {
+    border-right: 2px solid $red;
+  }
+  #search {
+    border-left: 2px solid $red;
+  }
+
+}

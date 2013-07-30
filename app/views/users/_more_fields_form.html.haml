@@ -1,0 +1,73 @@
+= form_for @user do |f|
+  .row
+    .large-6.columns
+      %fieldset
+        %legend About You
+        = f.label :first
+        = f.text_field :first, :autofocus => true
+        = f.label :last
+        = f.text_field :last
+        .row
+          .large-6.columns
+            =label_tag "Gender:"
+            .row
+              .large-6.columns
+                = f.label :is_female, "Male"
+                = f.radio_button :is_female, "false"
+              .large-6.columns
+                = f.label :is_female, "Female"
+                = f.radio_button :is_female, "true"
+          .large-6.columns
+            = f.label :age
+            = f.number_field :age
+        = f.label :occupation
+        = f.text_field :occupation
+        = f.label :ed_level, "Education Level"
+        = f.select :ed_level, options_for_select(@ed_levels)
+        %br
+        %br
+        .row
+          .large-6.columns
+            = label_tag "Looking for:"
+            .row
+              .large-6.columns
+                = f.label :interested_female, "Female"
+                = f.radio_button :interested_female, "true"
+              .large-6.columns
+                = f.label :interested_female, "Female"
+                = f.radio_button :interested_female, "true"
+          .large-6.columns
+            = label_tag :image, "Choose a Profile Picture"
+            = file_field_tag :image
+    .large-6.columns
+      %fieldset
+        %legend Interests
+        = f.label :hobbies
+        = f.text_area :hobbies, :size => "30x30"
+        = f.label :description
+        = f.text_area :description, :size => "30x100"
+        = f.label :tagline
+        = f.text_field :tagline
+  .row
+    .large-12.columns
+      %fieldset
+        %legend Desert Island Picks
+        .row
+          .large-4.columns
+            %fieldset
+              %legend Top 5 Movies
+              - 5.times do |x|
+                = text_field_tag "user[movies][]", @user.movies[x], :placeholder => "#{x+1}."
+          .large-4.columns
+            %fieldset
+              %legend Top 5 Books
+              - 5.times do |x|
+                = text_field_tag "user[books][]", @user.books[x], :placeholder => "#{x+1}."
+          .large-4.columns
+            %fieldset
+              %legend Top 5 TV Shows
+              - 5.times do |x|
+                = text_field_tag "user[television][]", @user.television[x], :placeholder => "#{x+1}."
+  .row
+    .large-4.large-centered.columns
+      = f.submit "Valentine", :class => "button radius alert large"

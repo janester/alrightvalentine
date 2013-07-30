@@ -1,0 +1,10 @@
+-if @current_user == @user && @current_user.sign_ins == 1 && @current_user.first.nil?
+  %h3 Create your Profile
+  = render :partial => "more_field_form"
+-else
+  = render :partial => "info"
+
+
+
+
+
