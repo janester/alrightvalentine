@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @ed_levels = ["High School", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "PhD"]
+    @user = User.find(params[:id])
   end
 
 
@@ -20,6 +22,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    binding.pry
+    redirect_to(user_path(@user))
   end
 end
