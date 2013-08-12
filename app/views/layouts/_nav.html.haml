@@ -3,7 +3,7 @@
     / Title Area
     %li.name
       %h1
-        %a{:href => "#"} AlrightValentine
+        = link_to("AlrightValentine", root_path)
     / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
     %li.toggle-topbar.menu-icon
       %a{:href => "#"}
@@ -19,6 +19,6 @@
         %li.divider.hide-for-small
         %li= link_to("Login", login_path, :remote => true)
       -else
-        %li= link_to(@current_user.email, user_path(@current_user.id))
+        %li= link_to("My Account", user_path(@current_user.id))
         %li.divider.hide-for-small
         %li= link_to("Log Out", logout_path, :method => "delete")
