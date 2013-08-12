@@ -26,4 +26,19 @@ class User
   has_secure_password
   attr_accessible :first, :last, :email, :password_confirmation, :password, :is_female, :occupation, :sign_ins, :age, :ed_level, :movies, :books, :television, :hobbies, :description, :tagline, :interested_female
 
+
+  before_update :format_name, :format_interests
+
+
+
+  def format_name
+    self.first = self.first.capitalize if self.first.present?
+    self.last = self.last.capitalize if self.first.present?
+  end
+
+  def format_interests
+    self.books.map!{|x| x.capitalize}
+    self.movies.map!{|x| x.capitalize}
+    self.television.map!{|x| x.capitalize}
+  end
 end

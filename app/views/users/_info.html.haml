@@ -2,4 +2,35 @@
 .row
   .large-6.columns
     %h1= "#{@user.first} #{@user.last}"
+    %h3= "#{@user.tagline}"
   .large-6.columns
+    -if @current_user == @user
+      = link_to("Edit", edit_user_path, :remote => true, :class => "button radius large alert")
+.row
+  .large-6.columns
+    %ul{:style => "list-style:none"}
+      %li= "Age: #{@user.age}"
+      %li= "Gender: #{@user.is_female ? 'Female' : 'Male'}"
+      %li= "Occupation: #{@user.occupation}"
+      %li= "Education Level: #{@user.ed_level}"
+      %li= "Interested In: #{@user.interested_female ? 'Female' : 'Male'}"
+  .large-6.columns
+    %ul
+      %li= "Hobbies: #{@user.hobbies}"
+      %li= "Description: #{@user.description}"
+.row
+  .large-4.columns
+    %h5 Movies
+    %ol
+      -@user.movies.each do |x|
+        %li= x
+  .large-4.columns
+    %h5 Books
+    %ol
+      -@user.books.each do |x|
+        %li= x
+  .large-4.columns
+    %h5 TV Shows
+    %ol
+      -@user.movies.each do |x|
+        %li= x
